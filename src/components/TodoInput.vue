@@ -1,13 +1,12 @@
 <template>
-
   <div>
-    header
+    input
   </div>
 </template>
 
 <script>
 export default {
-  name: "TodoHeader"
+  name: "TodoInput"
 }
 </script>
 

@@ -1,13 +1,12 @@
 <template>
-
   <div>
-    header
+    Footer
   </div>
 </template>
 
 <script>
 export default {
-  name: "TodoHeader"
+  name: "TodoFooter"
 }
 </script>
 
