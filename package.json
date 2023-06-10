@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^2.0.10",
     "vue": "^2.5.11"
   },
   "browserslist": [
