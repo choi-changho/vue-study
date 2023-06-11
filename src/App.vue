@@ -6,7 +6,9 @@
       v-bind:propsData="todoItems"
       v-on:removeItem="removeOneItem"
       v-on:toggleItem="toggleOneItem"/>
-    <TodoFooter/>
+    <TodoFooter
+      v-on:clearAll="clearAllItems"
+    />
   </div>
 </template>
 
@@ -41,6 +43,10 @@ export default {
       // 로컬스토리지 데이터 갱신
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    clearAllItems: function () {
+      this.todoItems = [];
+      localStorage.clear();
     }
   },
   created: function () {
