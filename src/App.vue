@@ -2,7 +2,10 @@
   <div id="app">
     <TodoHeader/>
     <TodoInput v-on:addTodoItem="addOneItem"/>
-    <TodoList v-bind:propsData="todoItems" v-on:removeItem="removeOneItem"/>
+    <TodoList
+      v-bind:propsData="todoItems"
+      v-on:removeItem="removeOneItem"
+      v-on:toggleItem="toggleOneItem"/>
     <TodoFooter/>
   </div>
 </template>
@@ -30,6 +33,14 @@ export default {
       localStorage.removeItem(todoItem.item);
       // 현재 인스턴스 todoItems 배열 내 제거
       this.todoItems.splice(index,1);
+    },
+    toggleOneItem: function (todoItem, index) {
+      // Prop 값으로 넘겨준 값을 다시 상단에 올려서 바꾸는 코드는 좋지 않음
+      // todoItem.completed = !todoItem.completed;
+      this.todoItems[index].completed = !this.todoItems[index].completed;
+      // 로컬스토리지 데이터 갱신
+      localStorage.removeItem(todoItem.item);
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     }
   },
   created: function () {
