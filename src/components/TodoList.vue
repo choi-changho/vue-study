@@ -8,7 +8,7 @@
         <span v-bind:class="{textCompleted: todoItem.completed}">
           {{ todoItem.item }}
         </span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem.item, index)">
+        <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
           <font-awesome-icon icon="trash-can" />
         </span>
       </li>
@@ -21,10 +21,8 @@ export default {
   props: ['propsData'],
   methods: {
     removeTodo: function (todoItem, index) {
-      // local storage 제거
-      localStorage.removeItem(todoItem);
-      // 현재 인스턴스 todoItems 배열 내 제거
-      this.todoItems.splice(index,1);
+      // Container 이벤트 실행
+      this.$emit('removeItem', todoItem, index);
     },
     toggleComplete: function (todoItem) {
       todoItem.completed = !todoItem.completed;

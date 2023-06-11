@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader/>
     <TodoInput v-on:addTodoItem="addOneItem"/>
-    <TodoList v-bind:propsData="todoItems"/>
+    <TodoList v-bind:propsData="todoItems" v-on:removeItem="removeOneItem"/>
     <TodoFooter/>
   </div>
 </template>
@@ -25,6 +25,12 @@ export default {
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
+    removeOneItem: function (todoItem, index) {
+      // local storage 제거
+      localStorage.removeItem(todoItem.item);
+      // 현재 인스턴스 todoItems 배열 내 제거
+      this.todoItems.splice(index,1);
+    }
   },
   created: function () {
     if (localStorage.length > 0) {
